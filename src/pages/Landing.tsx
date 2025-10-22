@@ -68,6 +68,12 @@ const azureCategories = [
   }
 ];
 
+const getRouteByName = (name) => {
+  const found = azureCategories.find(cat => cat.name === name);
+  return found ? found.route : '/';
+};
+
+
 const Landing = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -139,62 +145,83 @@ const Landing = () => {
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to RSP AI Interview Hub</h1>
             <p className="text-xl text-gray-600 mb-8">Master your tech interviews with AI-powered practice sessions</p>
             
-            {/* Service Categories */}
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Network className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Azure Networking</h3>
-                <p className="text-gray-600 text-sm">Virtual Networks, Subnets, VPN, Load Balancers, and more</p>
-              </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-6 w-6 text-red-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Infrastructure AS A Service</h3>
-                <p className="text-gray-600 text-sm">VMs, Functions, App Services, Containers</p>
-              </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Server className="h-6 w-6 text-green-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Platform As A Service</h3>
-                <p className="text-gray-600 text-sm">App Services, AKS, Storage, Key Vault, Databases</p>
-              </Card>
+<div className="grid md:grid-cols-3 gap-6 mt-12">
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Azure Networking'))}
+  >
+    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Network className="h-6 w-6 text-blue-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Azure Networking</h3>
+    <p className="text-gray-600 text-sm">Virtual Networks, Subnets, VPN, Load Balancers, and more</p>
+  </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <HardDrive className="h-6 w-6 text-orange-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Software As A Service</h3>
-                <p className="text-gray-600 text-sm">Microsoft 365, DevOps, Cognitive Services</p>
-              </Card>
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Azure IaaS'))}
+  >
+    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Shield className="h-6 w-6 text-red-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Azure IaaS</h3>
+    <p className="text-gray-600 text-sm">VMs, Functions, App Services, Containers</p>
+  </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Database className="h-6 w-6 text-purple-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">DevOps & IaC</h3>
-                <p className="text-gray-600 text-sm">CI/CD, Pipelines, Repos, Terraform, ARM</p>
-              </Card>
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Azure PaaS'))}
+  >
+    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Server className="h-6 w-6 text-green-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Azure PaaS</h3>
+    <p className="text-gray-600 text-sm">App Services, AKS, Storage, Key Vault, Databases</p>
+  </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code className="h-6 w-6 text-indigo-600" />
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Complete Azure Interview</h3>
-                <p className="text-gray-600 text-sm">Network, IaaS, PaaS, SaaS, 1st Round, Technical Round, HR Round</p>
-              </Card>
-            </div>
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Azure SaaS'))}
+  >
+    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <HardDrive className="h-6 w-6 text-orange-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Azure SaaS</h3>
+    <p className="text-gray-600 text-sm">Microsoft 365, DevOps, Cognitive Services</p>
+  </Card>
+
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Azure DevOps'))}
+  >
+    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Database className="h-6 w-6 text-purple-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Azure DevOps</h3>
+    <p className="text-gray-600 text-sm">CI/CD, Pipelines, Repos, Terraform, ARM</p>
+  </Card>
+
+  <Card
+    className="p-6 text-center hover:shadow-lg transition-shadow cursor-pointer"
+    onClick={() => navigate(getRouteByName('Complete Azure Interview'))}
+  >
+    <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Code className="h-6 w-6 text-indigo-600" />
+    </div>
+    <h3 className="font-semibold text-gray-900 mb-2">Complete Azure Interview</h3>
+    <p className="text-gray-600 text-sm">Network, IaaS, PaaS, SaaS, 1st Round, Technical Round, HR Round</p>
+  </Card>
+</div>
+
           </div>
 
           {/* Call to Action */}
           <div className="bg-white rounded-lg shadow-lg p-8 text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start?</h2>
-            <p className="text-gray-600 mb-6">Choose from {azureCategories.length} Azure categories from the sidebar to begin your preparation</p>
+            <p className="text-gray-600 mb-6">Choose from {azureCategories.length}  Choose an Azure category from the sidebar <b>or click any card above</b> to begin your preparation
+</p>
             <Button onClick={() => setSidebarOpen(true)} className="lg:hidden bg-blue-600 hover:bg-blue-700">
               Open Category Selection
             </Button>
